@@ -68,6 +68,11 @@ public class MainManager : MonoBehaviour
         ScoreText.text = $"Score : {m_Points}";
     }
 
+    //void PrintPoint(int point)
+    //{
+    //    Debug.Log("Point value: " + point);
+    //}
+
     public void GameOver()
     {
         m_GameOver = true;
