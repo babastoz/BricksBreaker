@@ -6,6 +6,8 @@ public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
 
+    public Color BallColor;
+
     private void Awake()
     {
         if (Instance != null)
