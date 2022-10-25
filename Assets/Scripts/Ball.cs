@@ -5,11 +5,17 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public float maxBallVelocity = 3.0f;
+    public float ballSize = 1.0f;
     private Rigidbody m_Rigidbody;
 
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        maxBallVelocity += MainManager.Instance.BallSpeed/10.0f;
+        ballSize += MainManager.Instance.BallSize/10.0f;
+        ResizeBall();
+        ChangeBallColor();
     }
     
     private void OnCollisionExit(Collision other)
@@ -26,11 +32,22 @@ public class Ball : MonoBehaviour
         }
 
         //max velocity
-        if (velocity.magnitude > 3.0f)
+        if (velocity.magnitude > maxBallVelocity)
         {
-            velocity = velocity.normalized * 3.0f;
+            velocity = velocity.normalized * maxBallVelocity;
         }
 
         m_Rigidbody.velocity = velocity;
+    }
+
+    void ResizeBall()
+    {
+        gameObject.transform.localScale *= ballSize;
+    }
+
+    void ChangeBallColor()
+    {
+        Material ballMaterial = GetComponent<Renderer>().material;
+        ballMaterial.color = MainManager.Instance.BallColor;
     }
 }

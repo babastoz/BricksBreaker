@@ -41,13 +41,5 @@ public class MenuUIHandler : MonoBehaviour
 #endif
     }
 
-    public void SaveSettings()
-    {
-
-    }
-
-    public void LoadSettings()
-    {
-
-    }
+    
 }
